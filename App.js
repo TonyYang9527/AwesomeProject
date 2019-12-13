@@ -25,14 +25,15 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import CallScreen from '@screens/CallScreen';
-
+import Counter from '@ts/Counter';
+import {Hello} from '@ts/Hello';
 
 const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <CallScreen />
+      <Hello name="World" enthusiasmLevel={1} />
       </SafeAreaView>
     </>
   );
