@@ -26,14 +26,19 @@ import {
 
 import CallScreen from '@screens/CallScreen';
 import Counter from '@ts/Counter';
-import {Hello} from '@ts/Hello';
+import { Hello } from '@ts/Hello';
+import { PickerSample } from '@ts/rmc-picker/sample/sample.picker';
+import { MultiPickerSample } from '@ts/rmc-picker/sample/sample.multipicker';
+
 
 const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-      <Hello name="World" enthusiasmLevel={1} />
+        <Hello name="World" enthusiasmLevel={1} />
+        <PickerSample />
+        <MultiPickerSample />
       </SafeAreaView>
     </>
   );
