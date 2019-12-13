@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "clean": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn install "
+    "clean": "watchman watch-del-all && rm -rf package-lock.json  && rm -rf yarn.lock && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* && yarn install "
   },
   "dependencies": {
     "react": "16.9.0",
