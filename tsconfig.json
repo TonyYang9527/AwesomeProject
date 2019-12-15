@@ -24,6 +24,7 @@
     "strict": true,
     "strictNullChecks": false,
     "target": "es2017",
+
   },
   "include": [
     "src/**/*.ts",

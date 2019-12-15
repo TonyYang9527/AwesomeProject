@@ -29,6 +29,11 @@ import Counter from '@ts/Counter';
 import { Hello } from '@ts/Hello';
 import { PickerSample } from '@ts/rmc-picker/sample/sample.picker';
 import { MultiPickerSample } from '@ts/rmc-picker/sample/sample.multipicker';
+import { PopupPickerSample } from '@ts/rmc-picker/sample/sample.popup';
+import { DatePickerSample } from '@ts/rmc-date-picker/sample/DatePickerSample';
+import { PopupDatePickerSample } from '@ts/rmc-date-picker/sample/PopupDatePickerSample';
+import { CascaderPickerSample } from '@ts/rmc-cascader/sample/picker';
+import { CascaderPopupPickerSample } from '@ts/rmc-cascader/sample/popup';
 
 
 const App: () => React$Node = () => {
@@ -36,9 +41,13 @@ const App: () => React$Node = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <Hello name="World" enthusiasmLevel={1} />
-        <PickerSample />
+        {/* <PickerSample />
         <MultiPickerSample />
+        <PopupPickerSample />
+        <DatePickerSample />
+        <PopupDatePickerSample /> */}
+        <CascaderPickerSample />
+        <CascaderPopupPickerSample />
       </SafeAreaView>
     </>
   );

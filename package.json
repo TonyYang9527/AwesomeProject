@@ -22,7 +22,8 @@
 
     "classnames": "^2.2.6",
     "rmc-feedback": "^2.0.0",
-    "rmc-dialog": "^1.1.1"
+    "rc-animate": "^2.10.2",
+    "array-tree-filter": "2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
