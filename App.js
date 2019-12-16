@@ -37,17 +37,13 @@ import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18 from '@utils/i18n';
 
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
-  }
-  componentDidMount() {
-    console.log("componentDidMount")
   }
 
   render() {
     return (
-    
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
@@ -61,7 +57,7 @@ export default class App extends Component {
           <CallScreen />
         </SafeAreaView>
       </View>
-   )
+    )
   }
 
 }

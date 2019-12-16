@@ -1,24 +1,28 @@
-'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
     Text,
     View,
+    Button,
     TouchableOpacity,
 } from 'react-native';
 
-import CallButton from '@components/CallButton';
 
 
+export default class CallScreen extends Component {
 
-export default class CallScreen extends React.Component {
 
+    changeLanguage(lng) {
+        this.props.i18n.changeLanguage(lng);
+    }
 
     render() {
         return (
             <TouchableOpacity onPress={() => this.handleButtonPressed()}>
-                <View>
-                    <CallButton />
+                <View style={styles.container}>
+                    <Text style={styles.message}>{this.props.i18n.t('THE FIRST WORD IN ENTERTAINMENT')}</Text>
+                    <Button title={this.props.i18n.t('English')} onPress={() => changeLanguage('en')} />
+                    <Button title={this.props.i18n.t('Portuguese')} onPress={() => changeLanguage('pt')} />
                 </View>
             </TouchableOpacity>
         );
