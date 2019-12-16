@@ -23,7 +23,6 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
 import CallScreen from '@screens/CallScreen';
 import Counter from '@ts/Counter';
 import { Hello } from '@ts/Hello';
@@ -34,24 +33,37 @@ import { DatePickerSample } from '@ts/rmc-date-picker/sample/DatePickerSample';
 import { PopupDatePickerSample } from '@ts/rmc-date-picker/sample/PopupDatePickerSample';
 import { CascaderPickerSample } from '@ts/rmc-cascader/sample/picker';
 import { CascaderPopupPickerSample } from '@ts/rmc-cascader/sample/popup';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import i18 from '@utils/i18n';
 
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        {/* <PickerSample />
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    console.log("componentDidMount")
+  }
+
+  render() {
+    return (
+    
+      <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          {/* <PickerSample />
         <MultiPickerSample />
         <PopupPickerSample />
         <DatePickerSample />
         <PopupDatePickerSample /> */}
-        <CascaderPickerSample />
-        <CascaderPopupPickerSample />
-      </SafeAreaView>
-    </>
-  );
-};
+          {/* <CascaderPickerSample />
+          <CascaderPopupPickerSample /> */}
+          <CallScreen />
+        </SafeAreaView>
+      </View>
+   )
+  }
 
+}
 
 export default App;

@@ -1,56 +1,42 @@
-/*
- * Copyright (c) 2011-2018, Zingaya, Inc. All rights reserved.
- */
-
-'use strict';
 
 import React, { Component } from 'react';
 import {
     Text,
     StyleSheet,
-    View,
-    TouchableOpacity,
+    View
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 export default class CallButton extends Component {
 
-    handleButtonPressed() {
-        this.props.buttonPressed();
+
+    constructor(props) {
+        super(props);
+        const { t, i18n } = useTranslation();
+    }
+
+    changeLanguage(lng) {
+        this.i18n.changeLanguage(lng);
     }
 
     render() {
         return (
-            <TouchableOpacity onPress={() => this.handleButtonPressed()}>
-                <View style={[styles.icon, { borderColor: this.props.color }]}>
-                    <Text >{"CallButton"}</Text>
-                </View>
-            </TouchableOpacity>
+            <View style={styles.container}>
+                <Text style={styles.message}>{t('THE FIRST WORD IN ENTERTAINMENT')}</Text>
+                <Button title={this.t('English')} onPress={() => changeLanguage('en')} />
+                <Button title={this.t('Chinese')} onPress={() => changeLanguage('zh')} />
+            </View>
         );
     }
 }
-
-var styles = StyleSheet.create({
-    icon: {
-        width: 50,
-        height: 50,
-        borderWidth: 2,
-        borderRadius: 35,
-        margin: 10,
-        alignItems: 'center',
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'transparent',
+        alignItems: 'center',
     },
-    phone_icon: {
-        borderColor: '#0C90E7',
-        marginHorizontal: 10,
-    },
-    align_left: {
-        alignSelf: 'flex-start',
-    },
-    align_right: {
-        alignSelf: 'flex-end',
-    },
-    align_center: {
-        alignSelf: 'center',
+    message: {
+        fontSize: 18,
+        marginBottom: 20,
     },
 });

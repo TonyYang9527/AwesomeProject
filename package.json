@@ -2,7 +2,7 @@
   "name": "AwesomeProject",
   "version": "0.0.1",
   "private": true,
-  "typings": "lib/__types__", 
+  "typings": "lib/__types__",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -13,17 +13,17 @@
     "clean": "watchman watch-del-all && rm -rf package-lock.json  && rm -rf yarn.lock && rm -rf node_modules && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-map-* "
   },
   "dependencies": {
-    "md5": "^2.2.1",
-    "react": "16.9.0",
-    "react-native": "0.61.2",
-    "react-native-i18n": "^2.0.15",
-    "react-native-localize": "^1.3.1",
-    "sqlite-json": "^1.1.0",
-
+    "array-tree-filter": "2.1.0",
     "classnames": "^2.2.6",
-    "rmc-feedback": "^2.0.0",
+    "i18next": "^19.0.2",
+    "md5": "^2.2.1",
     "rc-animate": "^2.10.2",
-    "array-tree-filter": "2.1.0"
+    "react": "16.9.0",
+    "react-i18next": "^11.2.6",
+    "react-native": "0.61.2",
+    "react-native-localize": "^1.3.1",
+    "rmc-feedback": "^2.0.0",
+    "sqlite-json": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -31,11 +31,11 @@
     "@babel/plugin-proposal-decorators": "^7.7.4",
     "@babel/runtime": "^7.7.4",
     "@react-native-community/eslint-config": "^0.0.5",
-    "@types/react": "^16.9.16",
-    "@types/react-native": "^0.60.25",
-    "@types/react-dom": "^16.9.4",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.4",
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-native": "^0.60.25",
     "babel-jest": "^24.9.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "eslint": "^6.5.1",
