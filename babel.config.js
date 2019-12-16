@@ -20,6 +20,7 @@ module.exports = function(api) {
             "@provider": './src/provider',
             "@resource": "./resource",
             "@constants": "./src/constants",
+            "@fmk": './src/fmk',
           },
         },
       ],

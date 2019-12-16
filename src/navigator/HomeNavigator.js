@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import { Image, Platform, StyleSheet, View } from 'react-native';
-import TabNavigator from 'react-native-tab-navigator';
+// import TabNavigator from 'react-native-tab-navigator';
 import { observer } from 'mobx-react';
 import { images as Resource } from '@resource';
 import HomeScreen from '@screens/HomeScreen';
@@ -13,7 +13,7 @@ import MeScreen from '@screens/MeScreen';
 import ContentLayout from '@components/common/ContentLayout';
 import * as Colors from '@constants/Colors';
 import { HomeTabbar, HomeTabArray } from '@stores/AppStore'
-
+import TabNavigator from '@fmk/react-native-tab-navigator/TabNavigator';
 
 @observer
 export default class HomeNavigator extends Component {
