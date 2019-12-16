@@ -17,7 +17,7 @@ class DrawerMenu extends React.Component {
         
     }
     _goPage=()=>{
-        console.log("====>",this.props.navigation.navigate("UserLogin"))
+        console.log("====>",this.props.navigation.navigate("LoginScreen"))
     }
     render() {
         return (
