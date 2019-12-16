@@ -3,6 +3,7 @@ module.exports = function(api) {
   return {
     presets: ['module:metro-react-native-babel-preset'],
     plugins: [
+      ['@babel/plugin-transform-flow-strip-types'],
       ["@babel/plugin-proposal-decorators", { "legacy": true}],
       ["@babel/plugin-proposal-class-properties", { "loose": true}],
       [
@@ -13,8 +14,12 @@ module.exports = function(api) {
             "@components": './src/components',
             "@ts": './src/ts',
             "@utils": './src/utils',
+            "@stores": './src/stores',
+            "@navigator": './src/navigator',
             "@translations": './src/translations',
             "@provider": './src/provider',
+            "@resource": "./resource",
+            "@constants": "./src/constants",
           },
         },
       ],

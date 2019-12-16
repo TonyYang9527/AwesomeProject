@@ -1,12 +1,12 @@
 import React ,{Component} from 'react';
-import { ActivityIndicator, AsyncStorage, Button,StatusBar, StyleSheet,View,Text} from 'react-native';
+import {StyleSheet,View,Text} from 'react-native';
 
-export default class SearchScreen extends Component {
+export default class SettingScreen extends Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Text> SearchScreen </Text>
+                <Text> SettingScreen </Text>
             </View>
         );
     }

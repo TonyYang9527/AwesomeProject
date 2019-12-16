@@ -1,30 +1,48 @@
 
 import React, { Component } from 'react';
-import {
-    Text,
-    View,
-    Button,
-    TouchableOpacity,
-} from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { PickerSample } from '@ts/rmc-picker/sample/sample.picker';
+import { MultiPickerSample } from '@ts/rmc-picker/sample/sample.multipicker';
+import { PopupPickerSample } from '@ts/rmc-picker/sample/sample.popup';
+import { DatePickerSample } from '@ts/rmc-date-picker/sample/DatePickerSample';
+import { PopupDatePickerSample } from '@ts/rmc-date-picker/sample/PopupDatePickerSample';
+import { CascaderPickerSample } from '@ts/rmc-cascader/sample/picker';
+import { CascaderPopupPickerSample } from '@ts/rmc-cascader/sample/popup';
 
 
 
-export default class CallScreen extends Component {
 
 
-    changeLanguage(lng) {
-        this.props.i18n.changeLanguage(lng);
+class CallScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        console.log(this.props)
     }
-
     render() {
+
         return (
-            <TouchableOpacity onPress={() => this.handleButtonPressed()}>
-                <View style={styles.container}>
-                    <Text style={styles.message}>{this.props.i18n.t('THE FIRST WORD IN ENTERTAINMENT')}</Text>
-                    <Button title={this.props.i18n.t('English')} onPress={() => changeLanguage('en')} />
-                    <Button title={this.props.i18n.t('Portuguese')} onPress={() => changeLanguage('pt')} />
-                </View>
-            </TouchableOpacity>
+            <View style={styles.container}>
+                <PickerSample />
+                <MultiPickerSample />
+                <PopupPickerSample />
+
+                <DatePickerSample />
+                <PopupDatePickerSample />
+
+                <CascaderPickerSample />
+                <CascaderPopupPickerSample />
+            </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+});
+
+export default CallScreen;

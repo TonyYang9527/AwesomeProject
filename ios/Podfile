@@ -36,6 +36,8 @@ target 'AwesomeProject' do
 
   pod 'RNLocalize', :path => '../node_modules/react-native-localize'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'AwesomeProjectTests' do
     inherit! :search_paths
     # Pods for testing
