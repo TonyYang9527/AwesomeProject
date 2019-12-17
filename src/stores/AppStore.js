@@ -8,8 +8,10 @@ class AppStore {
   @action
   changeLanguage(lng) {
     this.locale = lng;
+    console.log('AppStore changeLanguage ', i18n.t('greeting'))
     i18n.changeLanguage(lng);
-    console.log('AppStore changeLanguage ',lng)
+    console.log('AppStore changeLanguage ', i18n.t('greeting'))
+   
   }
 
 }
