@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 import RootNavigator from '@navigator/RootNavigator';
+import { inject, observer } from "mobx-react";
+import { Provider } from "mobx-react";
+import appStore from '@stores/AppStore';
 
 
 if (__DEV__) {
@@ -20,12 +23,15 @@ if (!__DEV__) {
 }
 
 class App extends Component {
-
   constructor(props) {
     super(props);
   }
   render() {
-    return (<RootNavigator />)
+    return (
+      <Provider appStore={appStore}>
+        <RootNavigator />
+      </Provider>
+    )
   }
 
 }

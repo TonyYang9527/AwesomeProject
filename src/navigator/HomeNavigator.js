@@ -25,11 +25,9 @@ export default class HomeNavigator extends Component {
         super(props)
         this.navi = props.navigation
     }
-
     _onItemPress = (tab) => {
         HomeTabbar.selectedTab = tab
     }
-
     _renderTab = (Component, tab, title, renderIcon) => {
         return <TabNavigator.Item title={title}
             selected={HomeTabbar.selectedTab === tab}

@@ -4,12 +4,14 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import {createAppContainer } from 'react-navigation';
 import Colors from '@constants/Colors';
-import CommonHeader from '@components/common/CommonHeader';
-
 import HomeNavigator from './HomeNavigator';
 import LanguageScreen from '@screens/LanguageScreen';
 import CallScreen from '@screens/CallScreen';
 import SettingScreen from '@screens/SettingScreen';
+import CommonHeader from '@components/common/CommonHeader';
+import { withNamespaces } from 'react-i18next';
+
+
 
 const defaultOptions = ({ navigation }) => ({
     headerLeft: null,
@@ -22,6 +24,9 @@ const defaultOptions = ({ navigation }) => ({
     headerTitle: <CommonHeader navigation={navigation} title={navigation.getParam('title')} />
 });
 
+
+
+  
 const RootNavigator = createStackNavigator(
     {
         Home: HomeNavigator,
@@ -44,4 +49,15 @@ const RootNavigator = createStackNavigator(
     }
 );
 
-export default createAppContainer(RootNavigator);
+class WrappedRootNavigator extends React.Component {
+    static router = RootNavigator.router;
+    render() {
+      const {t} = this.props;
+      console.log("WrappedRootNavigator this.props" ,this.props)
+      return <RootNavigator screenProps={{ t }} {...this.props} />;
+    }
+  }
+export default  withNamespaces('translation',{
+    bindI18n: 'languageChanged',
+    bindStore: false,
+  }) (createAppContainer(WrappedRootNavigator));

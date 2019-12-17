@@ -7,13 +7,11 @@ import zh from '@translations/zh.json';
 
 const locales = RNLocalize.getLocales();
 
-console.log("RNLocalize.getLocales()",locales[0].languageTag)
-
 i18n
 .use(XHR)
 .use(LanguageDetector)
 .init({
-  debug: true,
+  debug: false,
   lng: locales[0].languageTag,
   fallbackLng: 'en',
   resources: {

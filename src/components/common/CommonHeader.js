@@ -185,12 +185,6 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
         this.title = props.title
         this.renderTitle = props.renderTitle
         this.barStyle = this.parseStyle()
-        if (props.hasOwnProperty('navigation')) {
-            let { state } = props.navigation
-            let { routeName, params } = state
-            console.log(`%c routeName: ${routeName}`, 'font-size:20px;color:#00d084;')
-        }
-
     }
 
     state = {

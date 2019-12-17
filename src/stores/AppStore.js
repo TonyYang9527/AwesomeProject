@@ -14,17 +14,14 @@ class AppStore {
 }
 
 const appStore = new AppStore();
-export default appStore;
 
+export default appStore;
 reaction(
   () => appStore.locale,
   locale => {
-    console.log("change language", locale);
     i18n.changeLanguage(locale);
-
   }
 );
-
 
 export const HomeTabArray = {
   homeTab: 'homeTab',
