@@ -4,7 +4,6 @@
  */
 import React, { Component } from 'react';
 import { Image, Platform, StyleSheet, View } from 'react-native';
-// import TabNavigator from 'react-native-tab-navigator';
 import { observer } from 'mobx-react';
 import { images as Resource } from '@resource';
 import HomeScreen from '@screens/HomeScreen';
