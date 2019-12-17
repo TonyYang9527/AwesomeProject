@@ -5,6 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import en from '@translations/en.json';
 import zh from '@translations/zh.json';
 
+//local 
 const locales = RNLocalize.getLocales();
 
 i18n
@@ -14,10 +15,12 @@ i18n
   debug: false,
   lng: locales[0].languageTag,
   fallbackLng: 'en',
+  keySeparator: false,
   resources: {
     en: {translation: en},
     zh: {translation: zh},
   },
+  
 });
 export default i18n;
 

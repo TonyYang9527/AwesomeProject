@@ -25,8 +25,6 @@ const defaultOptions = ({ navigation }) => ({
 });
 
 
-
-  
 const RootNavigator = createStackNavigator(
     {
         Home: HomeNavigator,
@@ -53,7 +51,6 @@ class WrappedRootNavigator extends React.Component {
     static router = RootNavigator.router;
     render() {
       const {t} = this.props;
-      console.log("WrappedRootNavigator this.props" ,this.props)
       return <RootNavigator screenProps={{ t }} {...this.props} />;
     }
   }

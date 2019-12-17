@@ -1,34 +1,27 @@
 
-import { observable, reaction, action } from "mobx";
+import { observable, action } from "mobx";
 import i18n from '@utils/i18n';
 
 class AppStore {
-  @observable locale
-
+  @observable locale='';
+  
   @action
-  changeLanguage(locale) {
-    this.locale = locale;
-    //i18n.changeLanguage(locale);
+  changeLanguage(lng) {
+    this.locale = lng;
+    i18n.changeLanguage(lng);
+    console.log('AppStore changeLanguage ',lng)
   }
 
 }
-
 const appStore = new AppStore();
-
-export default appStore;
-reaction(
-  () => appStore.locale,
-  locale => {
-    i18n.changeLanguage(locale);
-  }
-);
-
-export const HomeTabArray = {
+const HomeTabArray = {
   homeTab: 'homeTab',
   cargoTab: 'cargoTab',
   meTab: 'meTab'
 }
-
-export const HomeTabbar = observable({
+const HomeTabbar = observable({
   selectedTab: 'homeTab'
 })
+
+export { appStore, HomeTabArray, HomeTabbar };
+

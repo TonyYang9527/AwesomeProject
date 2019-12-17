@@ -14,7 +14,10 @@ import ContentLayout from '@components/common/ContentLayout';
 import * as Colors from '@constants/Colors';
 import { HomeTabbar, HomeTabArray } from '@stores/AppStore'
 import TabNavigator from '@fmk/react-native-tab-navigator/TabNavigator';
+import { withNamespaces } from "react-i18next";
 
+
+@withNamespaces()
 @observer
 export default class HomeNavigator extends Component {
 
@@ -48,9 +51,9 @@ export default class HomeNavigator extends Component {
         return (
             <ContentLayout childIsFragment={true}>
                 <TabNavigator tabBarStyle={{ opacity: 1, backgroundColor: Colors.white }} sceneStyle={{ paddingBottom: 48 }}>
-                    {this._renderTab(HomeScreen, HomeTabArray.homeTab, 'Home', Resource.tabBar.ic_home())}
-                    {this._renderTab(MyCargoScreen, HomeTabArray.cargoTab, 'MyCargo', Resource.tabBar.ic_tools())}
-                    {this._renderTab(MeScreen, HomeTabArray.meTab, 'Me', Resource.tabBar.ic_search())}
+                    {this._renderTab(HomeScreen, HomeTabArray.homeTab, this.props.t('Home.title'), Resource.tabBar.ic_home())}
+                    {this._renderTab(MyCargoScreen, HomeTabArray.cargoTab,  this.props.t('MyCargo.title'), Resource.tabBar.ic_tools())}
+                    {this._renderTab(MeScreen, HomeTabArray.meTab, this.props.t('Me.title') , Resource.tabBar.ic_search())}
                 </TabNavigator>
                 {Platform.OS === 'ios' && <View style={styles.extraSafeArea} />}
             </ContentLayout>

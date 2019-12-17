@@ -2,5 +2,9 @@
 
     "greeting": "Hello World",
     "English": "English",
-    "Chinese": "Chinese"
+    "Chinese": "Chinese",
+
+    "Home.title": "Home",
+    "MyCargo.title": "MyCargo",
+    "Me.title": "Me"
   }
