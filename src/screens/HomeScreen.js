@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
 import { withNamespaces } from "react-i18next";
 import { inject, observer } from "mobx-react";
-
+import Config from 'react-native-config';
 
 @withNamespaces()
 @inject("appStore")
@@ -18,6 +18,12 @@ class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.message}>{Config.ENV}</Text>
+        <Text style={styles.message}>{Config.BASE_URL}</Text>
+        <Text style={styles.message}>{Config.CrewBudget_URL}</Text>
+        <Text style={styles.message}>{Config.MOLMockURL}</Text>
+        <Text style={styles.message}>{Config.VESSEL_URL}</Text>
+
         <Text style={styles.message}>{this.props.t('greeting')}</Text>
         <Text style={styles.message}>  {`selected Locale: ${JSON.stringify(this.props.appStore.locale)}`} </Text>
         <Text style={styles.message}>{`i18next Derived Locale: ${this.props.i18n.language}`}  </Text>

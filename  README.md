@@ -42,3 +42,28 @@
   ],
 }
 ```
+
+
+## Project files: react-native-config +.env.* +IOS 
+1. please check this link
+ https://github.com/luggit/react-native-config#advanced-android-setup
+
+// start 
+ iOS
+Read variables declared in .env from your Obj-C classes like:
+// import header
+
+**************
+
+// end  Different environments
+
+
+1. please check this link
+
+https://github.com/luggit/react-native-config#ios-multi-scheme
+
+// start iOS
+
+
+
+// end   Troubleshooting
