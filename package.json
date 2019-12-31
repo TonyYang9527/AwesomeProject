@@ -5,8 +5,8 @@
   "typings": "lib/__types__",
   "scripts": {
     "android": "react-native run-android",
-    "ios:uat": "ENVFILE=.env.uat react-native run-ios --scheme 'AwesomeProject  UAT'",
-    "ios": "ENVFILE=.env.pro react-native run-ios --scheme 'AwesomeProject'",
+    "ios": "ENVFILE=.env.uat react-native run-ios --scheme 'AwesomeProject  UAT'",
+    "ios:release": "ENVFILE=.env.pro react-native run-ios --scheme 'AwesomeProject'",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
