@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, View } from 'react-native'
-import { ViewProps, ViewStyle } from 'react-native'
+import { ViewProps, ViewStyle, ScrollViewProps } from 'react-native'
 import * as Colors from '@constants/Colors'
 
 import RefreshableView, { RefreshProps } from './RefreshableView'

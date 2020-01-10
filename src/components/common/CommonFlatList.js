@@ -27,7 +27,7 @@ export default class CommonFlatList extends Component<CommonFlatListProps>{
         keyExtractor: (item, index) => ('1000' + index),
         onEndReachedThreshold: 0.01, // don't change
         removeClippedSubviews: true,
-        ItemSeparatorComponent: () => <View style={{ height: Dimens.line, backgroundColor: Colors.line }} />
+        // ItemSeparatorComponent: () => <View style={{ height: Dimens.line, backgroundColor: Colors.line }} />
     }
 
     constructor(props) {
@@ -129,9 +129,9 @@ export default class CommonFlatList extends Component<CommonFlatListProps>{
             style={[{ backgroundColor: Colors.background }, this.props.style]}
             renderScrollComponent={this._renderScrollComponent}
             keyboardDismissMode='on-drag'
-            onScrollBeginDrag={this.onScrollBeginDrag}
-            onScrollEndDrag={this.onScrollEndDrag}
-            onEndReached={this._onEndReached}
+            // onScrollBeginDrag={this.onScrollBeginDrag}
+            // onScrollEndDrag={this.onScrollEndDrag}
+            // onEndReached={this._onEndReached}
         />
     }
 }

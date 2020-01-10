@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
 import { observer } from 'mobx-react';
-import { observable } from 'mobx';
+import { observable, toJS } from 'mobx';
 import { images as Resource } from '@resource';
 import * as Colors from '@constants/Colors';
 import * as Dimens from '@constants/Dimension';
+import i18n from '@utils/i18n'
 
 const BOX_PADDING = 7
 const ITEM_PADDING = Dimens.padding
@@ -159,7 +161,7 @@ export default class SearchBar extends React.Component<SearchBarProps>{
 		searchDelay: 0,
 		showSearchIcon: true,
 		useClearButton: true,
-		hint: 'Search',
+		hint: i18n.t('mobile.search'),
 		hintColor: '#DFDFDFE0',
 		keyboardType: 'default',
 		rightSticky: false,
@@ -180,26 +182,16 @@ export default class SearchBar extends React.Component<SearchBarProps>{
 	}
 
 	UNSAFE_componentWillReceiveProps(newProps) {
-		this.setKeyWord(newProps.value);
+		this.setKeyWord(newProps.value || '');
 	}
 
 	setKeyWord = (value) => {
-		if (Platform.OS === 'ios') {
-			this.inputRef && this.inputRef.setNativeProps({ text: value });
-		}
-		setTimeout(() => {
-			this.inputRef && this.inputRef.setNativeProps({ text: value })
-		}, 5)
+		this.inputRef && this.inputRef.setNativeProps({ text: value });
 	};
 
 	clearText = () => {
-		if (Platform.OS === 'ios') {
-			this.inputRef && this.inputRef.setNativeProps({ text: ' ' });
-		}
-		setTimeout(() => {
-			this.inputRef && this.inputRef.setNativeProps({ text: '' })
-			this.hasValue.set(false)
-		}, 5)
+		this.inputRef && this.inputRef.setNativeProps({ text: '' });
+		this.hasValue.set(false)
 	}
 
 	_onFocus = (e) => {

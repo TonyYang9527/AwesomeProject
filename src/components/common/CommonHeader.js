@@ -1,4 +1,5 @@
 
+'use strict';
 
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View, Platform, StatusBar } from 'react-native';
@@ -7,9 +8,10 @@ import { Header } from 'react-navigation-stack';
 import { images as Resource } from '@resource';
 import * as Colors from '@constants/Colors'
 import * as Dimens from '@constants/Dimension'
+import * as CommonStyle from '@constants/Style'
 import { font_title, title_height } from '@constants/Dimension'
-import SearchBar, { SearchBarProps } from './SearchBar'
-
+import SearchBar, { SearchBarProps, DarkTheme } from './SearchBar'
+import i18n from '@utils/i18n'
 
 const TITLE_MARGIN = Dimens.padding;
 
@@ -17,21 +19,23 @@ export const styles = StyleSheet.create({
     container: {
         width: '100%',
         flexDirection: 'row',
-        height: Platform.OS == 'ios' ? title_height : Header.HEIGHT,
+        height: (Platform.OS == 'ios' ? title_height : Header.HEIGHT+Dimens.PaddingStatsBarHeight),
         justifyContent: 'center',
-        backgroundColor: Colors.baseColor,
+        backgroundColor: Colors.white,
+        alignItems:Platform.OS == 'ios'?'center':'flex-end'
     },
     leftbtn: {
         position: 'absolute',
-        height: '100%',
+        height: Dimens.StatsBarHeight,
         left: 0,
         paddingLeft: Dimens.padding,
         paddingRight: Dimens.padding,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     titlebar: {
         position: 'absolute',
-        height: '100%',
+        height: Dimens.StatsBarHeight,
         left: TITLE_MARGIN,
         right: TITLE_MARGIN,
         justifyContent: 'center',
@@ -39,35 +43,35 @@ export const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: font_title,
-        fontWeight: Dimens.weight_600,
         textAlignVertical: 'center',
         textAlign: 'center',
         justifyContent: 'center',
-        color: 'white'
+        color: Colors.textColor,
+        // fontWeight: 'normal',
     },
     rightbtn: {
         position: 'absolute',
-        height: '100%',
+        height: Dimens.StatsBarHeight,
         right: 0,
         paddingLeft: Dimens.padding,
         paddingRight: Dimens.padding,
         justifyContent: 'center'
     },
     rightTxt: {
-        color: 'white',
+        color: Colors.textColor,
         fontSize: Dimens.font_size_middle,
         paddingRight: 4
     },
     icon: {
         height: 20,
         width: 20,
-        tintColor: 'white',
+        tintColor: Colors.textColor,
         resizeMode: 'stretch'
     },
     searchBar: {
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     dot: {
         position: 'absolute',
@@ -81,15 +85,12 @@ export const styles = StyleSheet.create({
 });
 
 export const NotificationButton = (props) => {
-    let { navigation, onRightPress } = props
+    let { navigation, onRightPress,rightSearchText } = props
     return <TouchableOpacity
         style={props.style}
         onPress={() => { onRightPress && onRightPress() }}>
-        <View style={styles.icon}>
-            <Image
-                source={Resource.icon.alarm()}
-                style={styles.icon} />
-            <View style={styles.dot}></View>
+        <View style={{justifyContent:'center'}}>
+            <Text style={{...CommonStyle.textNormalBlack}}>{rightSearchText}</Text>
         </View>
 
     </TouchableOpacity>
@@ -124,11 +125,13 @@ export class SearchBarHeader extends Component<SeacrhBarHeaderProps> {
     _renderSearchBar = () => {
         return <SearchBar
             {...this.props}
+            {...DarkTheme}
             value={this.value}
             style={styles.searchBar}
             onPress={this.props.onSearchBarPress}
-            hint={this.props.hint ? this.props.hint : 'Search'}
-            boxStyle={{ borderRadius: this.props.boxRadius }}
+            hint={this.props.hint ? this.props.hint : i18n.t('mobile.search')}
+            boxStyle={{ borderRadius: this.props.boxRadius,backgroundColor:'#F1F1F2' }}
+            iconStyle={{tintColor: '#8E8E93',width: 14,height: 14,}}
         />
     }
 
@@ -136,16 +139,16 @@ export class SearchBarHeader extends Component<SeacrhBarHeaderProps> {
         return <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <NotificationButton
                 navigation={this.navigation}
-                onRightPress={this.props.onRightPress} />
+                onRightPress={this.props.onRightPress}
+                rightSearchText={this.props.rightSearchText} />
         </View>
     }
 
     render() {
         return <CommonHeader
             {...this.props}
-            hideLeft={true}
             renderTitle={this._renderSearchBar}
-            renderRight={this.useDefIcon ? this._renderRight : null}
+            renderRight={this.props.useDefIcon ? this._renderRight : null}
             rightText={null}
         />
     }
@@ -176,7 +179,8 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
         leftIcon: Resource.icon.back(),
         noStatusbar: false,
         alignCenter: true,
-        multipleLine: false
+        multipleLine: false,
+        isLightBarStyle: false,
     }
 
     constructor(props) {
@@ -185,6 +189,12 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
         this.title = props.title
         this.renderTitle = props.renderTitle
         this.barStyle = this.parseStyle()
+        if(props.hasOwnProperty('navigation')){
+            let {state} =props.navigation
+            let {routeName,params } =state
+            console.log(`%c routeName: ${routeName}`,'font-size:20px;color:#00d084;')
+        }
+     
     }
 
     state = {
@@ -201,7 +211,7 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
         if (this.props.noStatusbar && Platform.OS === 'ios') {
             const { backgroundColor: colo } = this.style ? this.style : {}
             const sh = (parseInt(Platform.Version) === 10) ? 20 : 0
-            const co = colo ? colo : Colors.baseColor
+            const co = colo ? colo : Colors.white
             return { height: sh + title_height, backgroundColor: co, paddingTop: sh }
         }
     }
@@ -220,7 +230,7 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
         }
 
         if (leftIcon && !React.isValidElement(leftIcon)) {
-            leftIcon = <Image style={styles.icon} source={leftIcon} />
+            leftIcon = <Image style={[styles.icon,this.props.iconStyle]} source={leftIcon} />
         }
         return (
             <Component
@@ -250,7 +260,7 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
         return (
             <View style={[styles.titlebar, tiStyle]}>
                 {this.renderTitle ? this.renderTitle() : (
-                    <Text {...props} style={[styles.titleText, style]} >
+                    <Text {...props} style={[styles.titleText, style, this.props.textStyle]} >
                         {this.title}
                     </Text>
                 )}
@@ -288,9 +298,11 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
     }
 
     render() {
+        const statusBarStyle = this.props.isLightBarStyle ? 'light-content' : 'dark-content';
         if (this.barStyle) {
             return <View style={this.parseStyle()} >
                 <View style={[styles.container, this.style]}>
+                    <StatusBar barStyle={statusBarStyle}/>
                     {this._renderLeft(this.props)}
                     {this._renderTitle(this.state)}
                     {this._renderRight(this.props)}
@@ -298,6 +310,7 @@ export default class CommonHeader extends Component<CommonHeaderProps> {
             </View>
         } else {
             return <View style={[styles.container, this.style]}>
+                <StatusBar barStyle={statusBarStyle}/>
                 {this._renderLeft(this.props)}
                 {this._renderTitle(this.state)}
                 {this._renderRight(this.props)}

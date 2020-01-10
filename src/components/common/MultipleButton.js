@@ -96,7 +96,6 @@ export default class MultipleButton extends React.Component<MultipleButtonProps>
 	}
 
 	UNSAFE_componentWillReceiveProps(newprop) {
-		this.disable = newprop.disable
 		this.titles = newprop.titles
 		if (this.titles.length < 2) {
 			this.style = StyleSheet.flatten([{
@@ -124,8 +123,8 @@ export default class MultipleButton extends React.Component<MultipleButtonProps>
 		const bcolor = activateIndex === index ? activateColor : defaultColor
 		const fcolor = activateIndex === index ? defaultColor : activateColor
 
-		const bgColor = this.disable ? disableColor : bcolor
-		const txtcolor = this.disable ? Colors.white : textColor ? textColor : fcolor
+		const bgColor = this.props.disable ? disableColor : bcolor
+		const txtcolor = this.props.disable ? Colors.white : textColor ? textColor : fcolor
 		const divider = index === 0 ? { backgroundColor: bgColor }
 			: { backgroundColor: bgColor, borderColor: dividerColor, borderLeftWidth: dividerWidth }
 		const radiu = borderRadius ? this._getItemRadius(index + 1, borderRadius) : null
@@ -134,7 +133,7 @@ export default class MultipleButton extends React.Component<MultipleButtonProps>
 		return <TouchableOpacity
 			key={index + '05'}
 			activeOpacity={0.6}
-			disabled={this.disable}
+			disabled={this.props.disable}
 			style={touchStyle} 
 			onPress={() => { onPress({ title, index }) }}>
 			{_icon != null && <Image source={_icon}
@@ -145,7 +144,7 @@ export default class MultipleButton extends React.Component<MultipleButtonProps>
 	}
 
 	render() {
-		let border = this.disable ? { borderColor: this.props.disableColor } : {}
+		let border = this.props.disable ? { borderColor: this.props.disableColor } : {}
 		const totalStyle = StyleSheet.flatten([styles.container, this.style, border]);
 		delete totalStyle.borderRadius;
 		delete totalStyle.borderTopWidth;

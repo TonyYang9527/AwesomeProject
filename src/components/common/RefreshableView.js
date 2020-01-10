@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Animated, Platform, StyleSheet, RefreshControl, ScrollView, TextStyle } from 'react-native'
+import { Animated, Image, Platform, Text, StyleSheet, View, RefreshControl, ScrollView, TextStyle } from 'react-native'
 import { images as Resource } from '@resource'
 import * as Colors from '@constants/Colors'
 import * as Dimens from '@constants/Dimension'
 import MultipleButton from './MultipleButton'
 import ErrorComponent from './ErrorComponent'
+import i18n from '@utils/i18n'
 import { isEmpty } from '@utils/Utils';
 
 export interface RefreshProps {
@@ -87,9 +88,9 @@ export default class RefreshableView extends Component<RefreshProps> {
 
 	_renderEmpty = () => {
 		const { emptyStyle, emptyHeight, emptyIcon, emptyButton } = this.props
-		let emptyHint = this.props.emptyHint;
-		if (isEmpty(emptyHint)) {
-			emptyHint = 'No results found';
+		let emptyHint = this.props.emptyHint ;
+		if(isEmpty(emptyHint)){
+			emptyHint = i18n.t('mobile.common.text.noresult');
 		}
 
 		const fadeAnim = new Animated.Value(0)
@@ -112,7 +113,7 @@ export default class RefreshableView extends Component<RefreshProps> {
 					<MultipleButton
 						style={Styles.button}
 						borderRadius={24}
-						titles={['Refresh']}
+						titles={[i18n.t('refresh')]}
 						onPress={this._onRefresh}
 					/>
 				)}
