@@ -349,6 +349,59 @@ export const AgreeStyle = {
     }
 };
 
+export const textLightGray16 = {
+    color: Colors.borderColor,
+    fontSize: 16,
+};
+export const textGray16 = {
+    color: Colors.textLabel,
+    fontSize: 16,
+};
+export const textGray14 = {
+    color: Colors.textLabel,
+    fontSize: 14,
+};
+export const textBlack16 = {
+    color: Colors.textColor,
+    fontSize: 16,
+};
+export const textNormalGrey = {
+    fontSize:Dimens.font_size_normal,
+    color:Colors.textLabel,
+};
+export const textNormalBlack = {
+    fontSize:Dimens.font_size_normal,
+    color:Colors.textColor,
+};
+export const textNormalWhite = {
+    fontSize:Dimens.font_size_normal,
+    color:Colors.white,
+};
+export const textSmallWhite = {
+    fontSize:Dimens.font_size_small,
+    color:Colors.white,
+};
+export const textSmallGrey= {
+    fontSize:Dimens.font_size_small,
+    color:Colors.textLabel,
+};
+export const textSmallBlack= {
+    fontSize:Dimens.font_size_small,
+    color:Colors.textColor,
+};
+export const textMiddleWhite = {
+    fontSize:Dimens.font_size_middle,
+    color:Colors.white,
+};
+export const textMiddleBlack = {
+    fontSize:Dimens.font_size_middle,
+    color:Colors.textColor,
+};
+export const borderBottomLine = {
+    borderBottomColor:Colors.lineGrey,
+    borderBottomWidth: Dimens.MySize(1),
+};
+
 export default {
     ShadowStyle,
     tbIconStyle,

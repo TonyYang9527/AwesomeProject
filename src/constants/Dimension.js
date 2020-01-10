@@ -1,47 +1,53 @@
 'use strict';
 
 import { Dimensions, PixelRatio, StyleSheet, Platform } from 'react-native';
+import {isAndroid ,isIOS} from '@utils/Utils';
+
 export const { height, width } = Dimensions.get('window');
 export const ratio = () => { return PixelRatio.get() }
 
+export const MySize = (size) => { return width / 375 * size }
+
+export const StatsBarHeight = isAndroid ? '70%' : '100%';
+export const PaddingStatsBarHeight = isAndroid ? MySize(10) : 0;
 // base font size
-export const font_size_huge = 22;
-export const font_size_big = 18;
-export const font_size_middle = 16;
-export const font_item_title = 15;
-export const font_size_normal = 14;
-export const font_size_small = 12;
-export const font_size_min = 10;
-export const font_size_least = 8;
-export const font_size_tiny = 6;
-export const font_title = 18;
+export const font_size_huge = MySize(22);
+export const font_size_big = MySize(18);
+export const font_size_middle = MySize(16);
+export const font_item_title = MySize(15);
+export const font_size_normal = MySize(14);
+export const font_size_small = MySize(12);
+export const font_size_min = MySize(10);
+export const font_size_least = MySize(8);
+export const font_size_tiny = MySize(6);
+export const font_title = MySize(18);
 
-export const space_1 = 1;
-export const space_2 = 2;
-export const space_4 = 4;
-export const space_6 = 6;
-export const space_min = 8;
-export const space_least = 10;
-export const space_small = 12;
-export const space = 16;
-export const space_large = 20;
-export const space_huge = 24;
+export const space_1 = MySize(1);
+export const space_2 = MySize(2);
+export const space_4 = MySize(4);
+export const space_6 = MySize(6);
+export const space_min = MySize(8);
+export const space_least = MySize(10);
+export const space_small = MySize(12);
+export const space = MySize(16);
+export const space_large = MySize(20);
+export const space_huge = MySize(24);
 
-export const line = StyleSheet.hairlineWidth;
-export const border = 0.6;
-export const radius = 4;
-export const opacity = 0.7;
+export const line = MySize(1);
+export const border = MySize(0.6);
+export const radius = MySize(4);
+export const opacity = MySize(0.7);
 
-export const margin = 16;
-export const padding = 10;
-export const padding14 = 14;
-export const margin_horizontal = 12;
-export const margin_vertical = 12;
+export const margin = MySize(15);
+export const padding = MySize(15);
+export const padding14 = MySize(14);
+export const margin_horizontal = MySize(15);
+export const margin_vertical = MySize(12);
 
-export const item_height = 42; // don't change this, design value is 42
-export const section_height = 38;
-export const title_height = 44; // don't change this, design value is 44
-export const bw_button_height = 47; // don't change this, design value is 47
+export const item_height = MySize(42); // don't change this, design value is 42
+export const section_height = MySize(38);
+export const title_height = MySize(44); // don't change this, design value is 44
+export const bw_button_height = MySize(47); // don't change this, design value is 47
 
 export const weight_400 = Platform.OS == 'ios' ? '400' : '300'
 export const weight_500 = Platform.OS == 'ios' ? '500' : '400'
