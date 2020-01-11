@@ -1,15 +1,13 @@
 import { observable } from 'mobx';
-import { Sso, TokenManager } from 'bmo-sso-client';
+// import { Sso, TokenManager } from 'bmo-sso-client';
 import { BASE_URL } from '@constants/ServerConfig';
 import _storage from '@fmk/storage/StorageManager';
 import userStore from '@stores/user/UserStore';
-import {loadAssets} from './AssetsUtils';
 
 export const initApplication = () => {
     console.log('Application init...................')
     _storage.initStorage();
     _storage.configSessionStorage();
-    loadAssets();
     _storage.loadLanguage();
 };
 
@@ -21,6 +19,6 @@ export const loadResources = async () => {
     }
     await _storage.loadSessionStorage();
     const url = BASE_URL.substring(0,BASE_URL.length-1);
-    Sso.setting({ baseURL: url });
-    TokenManager.init();
+    // Sso.setting({ baseURL: url });
+    // TokenManager.init();
 };
