@@ -1,6 +1,6 @@
 
 import { observable, action } from "mobx";
-import i18n from '@utils/i18n';
+import i18n from '@fmk/i18n/i18n';
 
 class AppStore {
   @observable locale='';

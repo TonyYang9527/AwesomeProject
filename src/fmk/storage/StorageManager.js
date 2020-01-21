@@ -1,5 +1,5 @@
 'use strict';
-import { Global, SCOPE, GlobalConfig } from 'bmo-global';
+//import { Global, SCOPE, GlobalConfig } from 'bmo-global';
 import AsyncStorage from '@react-native-community/async-storage';
 import Storage from 'react-native-storage';
 import getDeviceLocale from 'react-native-device-info';
@@ -74,21 +74,21 @@ class _AppStorgeManager {
     }
 
     configSessionStorage() {
-        GlobalConfig.setStorageProviders(SCOPE.SESSION, {
-            setValue: (key, value) => {
-                sessionStorage[key] = value;
-                this.StorageDefault.save({ key: KEY_SESSION_STORAGE, data: sessionStorage, expires: null });
-            },
-            getValue: key => {
-                let item = sessionStorage[key];
-                return item || null;
-            },
-            removeValue: key => {
-                delete sessionStorage[key];
-                this.StorageDefault.save({ key: KEY_SESSION_STORAGE, data: sessionStorage, expires: null });
-            }
-        });
-        loginInformation = new Global(SCOPE.SESSION, 'Sso');
+        // GlobalConfig.setStorageProviders(SCOPE.SESSION, {
+        //     setValue: (key, value) => {
+        //         sessionStorage[key] = value;
+        //         this.StorageDefault.save({ key: KEY_SESSION_STORAGE, data: sessionStorage, expires: null });
+        //     },
+        //     getValue: key => {
+        //         let item = sessionStorage[key];
+        //         return item || null;
+        //     },
+        //     removeValue: key => {
+        //         delete sessionStorage[key];
+        //         this.StorageDefault.save({ key: KEY_SESSION_STORAGE, data: sessionStorage, expires: null });
+        //     }
+        // });
+        // loginInformation = new Global(SCOPE.SESSION, 'Sso');
     }
 
     async loadSessionStorage() {

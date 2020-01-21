@@ -1,7 +1,7 @@
 import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from "mobx-react";
-import i18n from '@utils/i18n';
+import i18n from '@fmk/i18n/i18n';
 import stores from '@stores';
 
 
