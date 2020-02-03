@@ -236,7 +236,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
   // JPush
-     // implementation files('libs/jcore-android-2.2.8.jar')
+  implementation files('libs/jcore-android-2.2.8.jar')
      //implementation files('libs/jpush-android-3.5.4.jar')
     // implementation 'cn.jiguang.sdk.plugin:xiaomi:3.1.5'
     // implementation 'cn.jiguang.sdk.plugin:huawei:3.1.5'

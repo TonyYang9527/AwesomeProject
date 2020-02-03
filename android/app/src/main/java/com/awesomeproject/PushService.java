@@ -1,4 +1,4 @@
-package com.xuexiang.jpush;
+package com.awesomeproject;
 
 import cn.jpush.android.service.JCommonService;
 
