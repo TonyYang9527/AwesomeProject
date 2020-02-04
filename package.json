@@ -27,7 +27,7 @@
     "i18next-react-native-language-detector": "^1.0.2",
     "i18next-xhr-backend": "1.5.1",
     "jcore-react-native": "1.7.5",
-		"jpush-react-native": "2.5.2",
+		"jpush-react-native": "2.7.5",
     "md5": "^2.2.1",
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",

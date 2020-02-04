@@ -77,7 +77,9 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     entryFile: "index.js",
+    bundleInDebug: true,
     enableHermes: false,  // clean and rebuild if changing
+
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -135,12 +137,6 @@ android {
         versionName "1.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-
-         ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86', 'x86_64', 'mips', 'mips64'
-            //,'x86', 'x86_64', 'mips', 'mips64'
-        }
         manifestPlaceholders = [
                 JPUSH_APPKEY : "81c2db6d2ba1e8225923ab49",//值来自开发者平台取得的AppKey
                 JPUSH_CHANNEL: "developer-default",
@@ -150,6 +146,11 @@ android {
                 // MEIZU_APPKEY:"",//魅族平台注册的 appkey
                 // MEIZU_APPID:"",//魅族平台注册的 appid
         ]
+         ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86', 'x86_64', 'mips', 'mips64'
+            //,'x86', 'x86_64', 'mips', 'mips64'
+        }
     }
 
     splits {
@@ -165,20 +166,13 @@ android {
         abortOnError false
     }
 
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
+    // sourceSets {
+    //     main {
+    //         jniLibs.srcDirs = ['libs']
+    //     }
+    // }
 
-    splits {
-        abi {
-            reset()
-            enable enableSeparateBuildPerCPUArchitecture
-            universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
-        }
-    }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -231,12 +225,15 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':jpush-react-native')  // 添加 jpush 依赖
+    implementation project(':jcore-react-native')  // 添加 jcore 依赖
+
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
     implementation "com.android.support:appcompat-v7:28.0.0"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
-  // JPush
-  implementation files('libs/jcore-android-2.2.8.jar')
+   // JPush
+    //implementation files('libs/jcore-android-2.2.8.jar')
      //implementation files('libs/jpush-android-3.5.4.jar')
     // implementation 'cn.jiguang.sdk.plugin:xiaomi:3.1.5'
     // implementation 'cn.jiguang.sdk.plugin:huawei:3.1.5'
