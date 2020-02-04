@@ -228,17 +228,17 @@ dependencies {
     implementation project(':jpush-react-native')  // 添加 jpush 依赖
     implementation project(':jcore-react-native')  // 添加 jcore 依赖
 
-    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
-    implementation "com.android.support:appcompat-v7:28.0.0"
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+    //implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    //implementation "com.android.support:appcompat-v7:28.0.0"
+    //implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
-   // JPush
-    //implementation files('libs/jcore-android-2.2.8.jar')
+     //JPush
      //implementation files('libs/jpush-android-3.5.4.jar')
-    // implementation 'cn.jiguang.sdk.plugin:xiaomi:3.1.5'
-    // implementation 'cn.jiguang.sdk.plugin:huawei:3.1.5'
-    // implementation 'cn.jiguang.sdk.plugin:meizu:3.1.5'
-   debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
+     //implementation 'cn.jiguang.sdk.plugin:xiaomi:3.1.5'
+     //implementation 'cn.jiguang.sdk.plugin:huawei:3.1.5'
+     //implementation 'cn.jiguang.sdk.plugin:meizu:3.1.5'
+     //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
+    
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
