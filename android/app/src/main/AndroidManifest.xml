@@ -80,11 +80,6 @@
             </intent-filter>
         </service>
 
-            
-
-
-
-
         <!-- Rich push 核心功能 since 2.0.6-->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
@@ -176,17 +171,10 @@
             </intent-filter>
         </activity>
 
-
-     
-
-
-
         <!-- User defined.  For test only  用户自定义接收消息器,3.0.7开始支持,目前新tag/alias接口设置结果会在该广播接收器对应的方法中回调-->
-  
         <!-- Required  . Enable it you can get statistics data with channel -->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="81c2db6d2ba1e8225923ab49" /> <!--  </>值来自开发者平台取得的AppKey-->
-
+        <meta-data android:name="JPUSH_APPKEY" android:value="16a6296ff0e3adaef840b358" /> <!--  </>值来自开发者平台取得的AppKey-->
 
     </application>
 
