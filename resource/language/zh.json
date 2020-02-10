@@ -1,5 +1,7 @@
 {
   "Home.title":"首页",
+  "MyCargo.title":"货主",
+  "Me.title":"我的",
   "common.user.exits": "用户帐户已存在！",
   "Common.button.send offer": "发送",
   "addcargo.details.cargoname": "货盘名称",

@@ -1,5 +1,7 @@
 {
     "Home.title":"Home",
+    "MyCargo.title":"MyCargo",
+    "Me.title":"Me",
     "common.user.exits": "User account already exists!",
     "Common.button.send offer": "Send Offer",
     "addcargo.details.cargoname": "Cargo Name",

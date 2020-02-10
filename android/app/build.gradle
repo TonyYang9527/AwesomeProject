@@ -77,7 +77,9 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     entryFile: "index.js",
+    bundleInDebug: true,
     enableHermes: false,  // clean and rebuild if changing
+
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -133,7 +135,24 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        manifestPlaceholders = [
+                JPUSH_APPKEY : "16a6296ff0e3adaef840b358",//值来自开发者平台取得的AppKey
+                JPUSH_CHANNEL: "default",
+                // XIAOMI_APPKEY:"",//小米平台注册的 appkey
+                // XIAOMI_APPID:"",//小米平台注册的 appid
+                // HUAWEI_APPID:"",//华为平台注册的 appid
+                // MEIZU_APPKEY:"",//魅族平台注册的 appkey
+                // MEIZU_APPID:"",//魅族平台注册的 appid
+        ]
+         ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a','x86', 'x86_64', 'mips', 'mips64'
+            //,'x86', 'x86_64', 'mips', 'mips64'
+        }
     }
+
     splits {
         abi {
             reset()
@@ -142,6 +161,18 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
+
+     lintOptions {
+        abortOnError false
+    }
+
+    // sourceSets {
+    //     main {
+    //         jniLibs.srcDirs = ['libs']
+    //     }
+    // }
+
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -176,12 +207,38 @@ android {
 
         }
     }
+
+    packagingOptions {
+        pickFirst '**/armeabi-v7a/libc++_shared.so'
+        pickFirst '**/x86/libc++_shared.so'
+        pickFirst '**/arm64-v8a/libc++_shared.so'
+        pickFirst '**/x86_64/libc++_shared.so'
+        pickFirst '**/x86/libjsc.so'
+        pickFirst '**/armeabi-v7a/libjsc.so'
+
+        doNotStrip '*/mips/*.so' 
+        doNotStrip '*/mips64/*.so' 
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':jpush-react-native')  // 添加 jpush 依赖
+    implementation project(':jcore-react-native')  // 添加 jcore 依赖
 
+    //implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    //implementation "com.android.support:appcompat-v7:28.0.0"
+    //implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+
+     //JPush
+     //implementation files('libs/jpush-android-3.5.4.jar')
+     //implementation 'cn.jiguang.sdk.plugin:xiaomi:3.1.5'
+     //implementation 'cn.jiguang.sdk.plugin:huawei:3.1.5'
+     //implementation 'cn.jiguang.sdk.plugin:meizu:3.1.5'
+     //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
+    
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
