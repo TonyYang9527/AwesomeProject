@@ -52,18 +52,18 @@
  iOS
 Read variables declared in .env from your Obj-C classes like:
 // import header
-
 **************
-
 // end  Different environments
-
-
 1. please check this link
-
 https://github.com/luggit/react-native-config#ios-multi-scheme
-
 // start iOS
-
-
-
 // end   Troubleshooting
+
+## Function 1:  I18n
+## Function 2:  JPush
+## Function 3:  AppLink
+## Function 4:  upgrade version
+## Function 5:  login ,logout ,forgot password, setting 
+
+
+
