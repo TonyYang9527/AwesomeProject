@@ -138,7 +138,7 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         manifestPlaceholders = [
-                JPUSH_APPKEY : "129c21dc4cb5e6f6de194003",//值来自开发者平台取得的AppKey
+                JPUSH_APPKEY : "16a6296ff0e3adaef840b358",//值来自开发者平台取得的AppKey
                 JPUSH_CHANNEL: "default",
                 // XIAOMI_APPKEY:"",//小米平台注册的 appkey
                 // XIAOMI_APPID:"",//小米平台注册的 appid

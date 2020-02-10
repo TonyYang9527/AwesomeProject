@@ -27,40 +27,6 @@ export default class MeScreen extends Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount() {
-        JPush.init();
-        //连接状态
-        this.connectListener = result => {
-            console.log("connectListener:" + JSON.stringify(result))
-        };
-        JPush.addConnectEventListener(this.connectListener);
-        //通知回调
-        this.notificationListener = result => {
-            console.log("notificationListener:" + JSON.stringify(result))
-        };
-        JPush.addNotificationListener(this.notificationListener);
-        //本地通知回调
-        this.localNotificationListener = result => {
-            console.log("localNotificationListener:" + JSON.stringify(result))
-        };
-        JPush.addLocalNotificationListener(this.localNotificationListener);
-        //自定义消息回调
-        this.customMessageListener = result => {
-            console.log("customMessageListener:" + JSON.stringify(result))
-        };
-        JPush.addCustomMessagegListener(this.customMessageListener);
-        //tag alias事件回调
-        this.tagAliasListener = result => {
-            console.log("tagAliasListener:" + JSON.stringify(result))
-        };
-        JPush.addTagAliasListener(this.tagAliasListener);
-        //手机号码事件回调
-        this.mobileNumberListener = result => {
-            console.log("mobileNumberListener:" + JSON.stringify(result))
-        };
-        JPush.addMobileNumberListener(this.mobileNumberListener);
-    }
-
     render() {
         return (
             <View style={styles.container}>

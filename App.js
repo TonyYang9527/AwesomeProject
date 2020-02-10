@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import RootNavigator from '@navigator/RootNavigator';
 import {initApplication, loadResources} from '@utils/AppLoader';
 import SplashScreen from 'react-native-splash-screen';
-
+import JPush from 'jpush-react-native';
 
 
 if (__DEV__) {
@@ -30,6 +30,37 @@ class App extends Component {
   }
 
   componentDidMount(){
+    JPush.init();
+    //连接状态
+    this.connectListener = result => {
+        console.log("connectListener:" + JSON.stringify(result))
+    };
+    JPush.addConnectEventListener(this.connectListener);
+    //通知回调
+    this.notificationListener = result => {
+        console.log("notificationListener:" + JSON.stringify(result))
+    };
+    JPush.addNotificationListener(this.notificationListener);
+    //本地通知回调
+    this.localNotificationListener = result => {
+        console.log("localNotificationListener:" + JSON.stringify(result))
+    };
+    JPush.addLocalNotificationListener(this.localNotificationListener);
+    //自定义消息回调
+    this.customMessageListener = result => {
+        console.log("customMessageListener:" + JSON.stringify(result))
+    };
+    JPush.addCustomMessagegListener(this.customMessageListener);
+    //tag alias事件回调
+    this.tagAliasListener = result => {
+        console.log("tagAliasListener:" + JSON.stringify(result))
+    };
+    JPush.addTagAliasListener(this.tagAliasListener);
+    //手机号码事件回调
+    this.mobileNumberListener = result => {
+        console.log("mobileNumberListener:" + JSON.stringify(result))
+    };
+    JPush.addMobileNumberListener(this.mobileNumberListener);
     //init jPush
     // appStore.setupJpush();
     loadResources().then(() => {
