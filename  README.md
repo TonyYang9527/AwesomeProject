@@ -59,11 +59,17 @@ https://github.com/luggit/react-native-config#ios-multi-scheme
 // start iOS
 // end   Troubleshooting
 
-## Function 1:  I18n
-## Function 2:  JPush
-## Function 3:  AppLink
-## Function 4:  upgrade version
-## Function 5:  login ,logout ,forgot password, setting 
+## Support  1:  I18n   Done !!!
+## Support  2:  JPush  Done !!!
+## Support  3:  TypeScript Components  Done !!!
+
+## #####Coming Soon##### ## 
+## Support 4:   Chat
+## Support 5:   share to Social  wechat whatApp ,linkin,facebook
+
+## Support 6:   AppLink
+## Support 7:   upgrade version
+## Support 9:  login ,logout ,forgot password, setting 
 
 
 
