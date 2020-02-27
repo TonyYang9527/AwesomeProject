@@ -44,6 +44,10 @@
 ```
 
 
+## Project files: react-native-config +.env.* + Android 
+1. please check this link
+https://github.com/luggit/react-native-config
+
 ## Project files: react-native-config +.env.* +IOS 
 1. please check this link
  https://github.com/luggit/react-native-config#advanced-android-setup
