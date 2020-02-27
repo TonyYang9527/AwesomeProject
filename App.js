@@ -5,7 +5,7 @@ import RootNavigator from '@navigator/RootNavigator';
 import {initApplication, loadResources} from '@utils/AppLoader';
 import SplashScreen from 'react-native-splash-screen';
 import JPush from 'jpush-react-native';
-
+import {appStore} from '@stores/AppStore';
 
 if (__DEV__) {
   GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
@@ -61,12 +61,12 @@ class App extends Component {
         console.log("mobileNumberListener:" + JSON.stringify(result))
     };
     JPush.addMobileNumberListener(this.mobileNumberListener);
-    //init jPush
-    // appStore.setupJpush();
+   
     loadResources().then(() => {
-      //appStore.setupJpush();
       this.setState({ isLoading: false });
       SplashScreen.hide();
+      //init jPush
+      appStore.setupJpush();
   });
 }
 
